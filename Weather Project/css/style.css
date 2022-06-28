@@ -1,0 +1,109 @@
+body {
+  display: block;
+  margin: 50px auto;
+  margin-top: 20px;
+  max-width: 50%;
+}
+
+.searchBar {
+  text-align: center;
+}
+
+h1,
+.todayTemp,
+.day,
+.todayWeather,
+.me,
+.dateAndTime {
+  font-family: "Roboto Serif", serif;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+h1 {
+  text-align: center;
+}
+
+.todayWeather {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.dateAndTime {
+  font-weight: 600;
+  text-align: center;
+  font-size: 26px;
+}
+
+.todayTemp {
+  position: relative;
+  top: -80px;
+  text-align: center;
+}
+
+.mainTemp,
+.main {
+  font-size: 60px;
+  margin-left: 10px;
+}
+
+.todayLoHi {
+  font-size: larger;
+  position: relative;
+  left: 10px;
+  font-size: 20px;
+}
+.fDegrees {
+  margin-left: 3px;
+}
+
+.fDegrees,
+.cDegrees {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+.misc {
+  font-weight: bold;
+}
+
+.day {
+  text-align: center;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+}
+
+.temp {
+  text-align: center;
+}
+
+.high {
+  font-weight: bold;
+}
+
+.cityName {
+  text-align: center;
+}
+
+.weekTemp {
+  margin-top: -30px;
+}
+
+.me {
+  text-align: center;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.credit {
+  font-size: xx-small;
+}
