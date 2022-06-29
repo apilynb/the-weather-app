@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <div class="container border rounded shadow p-3 mb-5 bg-body rounded p-4">
+    <div class="container border rounded shadow p-3 mb-5 bg-body rounded p-4 weatherApp">
       <div class="row">
         <div class="col-8">
          <form id="city-search">
@@ -45,42 +45,42 @@
         </div>
         <div class="col-4">
           <button type="button" class="btn btn-dark current">📍Current</button>
-          <span class="fDegrees"> <a href="#">°F</a> | </span>
-          <span class="cDegrees">
-            <a href="#">°C</a>
-          </span>
         </div>
       </div>
       <br />
-      <div class="row">
-        <div class="col-12 cityName">
-          <h1 id="city-name">
-          </h1>
-          <div class="dateAndTime"> 
-             
+      <div class="row clearfix">
+        <div class="col-6">
+           <div class="todayTemp">
+            
+            <div class= "main"><img class="mainImage" src="animated/day.svg" alt="Clear"> <span class="mainTemp">48</span>
+           <span class="fDegrees"> <a href="#">°F</a> | </span>
+            <span class="cDegrees">
+            <a href="#">°C</a>
+            </span>
             </div>
-        </div>
-        <div class="col-12 todayWeather">Rain</div>
-      </div>
-      <div class="row">
-        <div class="col-3 todayTemp">
-          
-          <div class= "main"> <span class="mainTemp">48</span>°</div>
-          <div class="todayLoHi">
+            <div class="todayLoHi">
             <span class="todayLow">46°</span> /
             <span class="high">57°</span>
+            </div>
+            </div>
         </div>
-        </div>
-        <div class="col-8">
-          <div class="row">
-            <div class="col-6">
+        <div class="col-6 leftBody">
+          <div class="col-12 cityName">
+          <h1 id="city-name">
+            City Name
+          </h1>
+          <div class="dateAndTime"> 
+             Day and Time
+            </div>
+          </div>
+          <div class="col-12 todayWeather">Rain</div>
+            <div class="col-6 weatherDetails clearfix">
               <span class="misc">Wind Speed:</span>
               <span class="windSpeed">5 mph</span>
               <br />
-              <span class="misc">UV Index:</span>
-              <span class="uvIndex">2</span>
-            </div>
-            <div class="col-6">
+              <span class="misc">Humidity:</span>
+              <span class="humidity">2</span>
+              <br>
               <span class="misc">Sunrise:</span>
               <span class="sunriseTime">6:07 a.m.</span>
               <br />
@@ -88,8 +88,13 @@
               <span class="sunsetTime">8:12 p.m.</span>
             </div>
           </div>
+          <div class="row">
+       
+          <div class="col-8">
+          
         </div>
       </div>
+    </div>
       <div class="row weekTemp">
         <div class="col-2">
           <div class="day">Mon</div>
@@ -120,12 +125,12 @@
           <img src="animated/day.svg" alt="" />
           <div class="temp">56°/ <span class="high"> 69°</span></div>
         </div>
-
-        <div class="col-2">
+         <div class="col-2">
           <div class="day">Sat</div>
           <img src="animated/day.svg" alt="" />
           <div class="temp">61°/ <span class="high">72°</span></div>
         </div>
+       
       </div>
     </div>
      <div class="me"> <a href="https://github.com/apilynb/the-weather-app" target="_blank" class="gitHubLink">Open Source Code</a> by Apilyn Bonny</div>

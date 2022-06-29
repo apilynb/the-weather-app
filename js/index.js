@@ -58,9 +58,11 @@ function updateInfo (response) {
   let todayLow = document.querySelector(".todayLow");
   let todayHigh = document.querySelector(".high");
   let description = document.querySelector(".todayWeather");
+  let humidity = document.querySelector(".humidity");
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
-  todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`
+  todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
   todayHigh.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  humidity.innerHTML = `${response.data.main.humidity}%`;
   description.innerHTML = response.data.weather[0].main;
   h1.innerHTML = response.data.name;
   mainTemp.innerHTML = temp;
