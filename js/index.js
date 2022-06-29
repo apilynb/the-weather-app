@@ -1,7 +1,6 @@
 // Get The Time & Day
 
 let now = new Date();
-console.log(now);
 let today = document.querySelector(".dateAndTime");
 
 let days = [
@@ -50,9 +49,17 @@ function changeCity(event) {
 
 function updateInfo (response) {
   let h1 = document.querySelector("h1");
-  
+  console.log(response);
   let mainTemp = document.querySelector(".mainTemp");
   let temp = Math.round(response.data.main.temp);
+  let windSpeed = document.querySelector(".windSpeed");
+  let todayLow = document.querySelector(".todayLow");
+  let todayHigh = document.querySelector(".high");
+  let description = document.querySelector(".todayWeather");
+  windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
+  todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`
+  todayHigh.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
+  description.innerHTML = response.data.weather[0].main;
   h1.innerHTML = response.data.name;
   mainTemp.innerHTML = temp;
 }
