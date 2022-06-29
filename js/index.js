@@ -1,9 +1,11 @@
 // Get The Time & Day
 
-let now = new Date();
-let today = document.querySelector(".dateAndTime");
+function getDayAndTime () {
+  let now = new Date();
+  console.log(now);
+  let today = document.querySelector(".dateAndTime");
 
-let days = [
+  let days = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -25,7 +27,7 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-today.innerHTML = `${weekday} ${hour}:${minutes}`;
+today.innerHTML = `${weekday} ${hour}:${minutes}`;}
 
 // Code for getting City Name
 
@@ -83,6 +85,7 @@ function getPosition (position) {
   let cWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   console.log(cWeatherUrl);
   let locationUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${apiKey}&units=${units}`;
+  console.log(locationUrl);
   axios.get(cWeatherUrl).then(retrieveCTemp);
   axios.get(locationUrl).then(retrieveCityName);
 }
@@ -99,3 +102,4 @@ h1.innerHTML = currentCityName;
 }
 
 search("New York City");
+getDayAndTime();
