@@ -1,9 +1,8 @@
 // Get The Time & Day
 
-function getDayAndTime () {
-  let now = new Date();
-  console.log(now);
-  let today = document.querySelector(".dateAndTime");
+function getDayAndTime (timestamp) {
+  let now = new Date(timestamp);
+  
 
   let days = [
   "Sunday",
@@ -17,17 +16,18 @@ function getDayAndTime () {
 
 let weekday = days[now.getDay()];
 let hour = now.getHours();
-let minutes = now.getMinutes();
 
 if (hour < 10) {
   hour = `0${hour}`;
 }
 
+let minutes = now.getMinutes();
 if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-today.innerHTML = `${weekday} ${hour}:${minutes}`;}
+return `${weekday} ${hour}:${minutes}`
+console.log(Response);}
 
 // Code for getting City Name
 
@@ -59,6 +59,11 @@ function updateInfo (response) {
   let todayHigh = document.querySelector(".high");
   let description = document.querySelector(".todayWeather");
   let humidity = document.querySelector(".humidity");
+  let dateTime = document.querySelector(".dateAndTime");
+  
+
+  dateTime.innerHTML = `Last Updated: ${getDayAndTime(response.data.dt * 1000)}`;
+  console.log(dateTime);
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
   todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
   todayHigh.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
