@@ -23,20 +23,6 @@ if (minutes < 10) {
 return `${weekday} ${hour}:${minutes}`;
 }
 
-function getTime (sunTime) {
-  let time = new Date (sunTime);
-  let hour = time.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  };
-
-  let minutes = time.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  };
-  return `${hour}:${minutes}`;
-}
-
 // Code for getting City Name
 
 let city = document.querySelector("#city-name");
@@ -58,6 +44,7 @@ function changeCity(event) {
 }
 
 function updateInfo (response) {
+  console.log(response);
   let h1 = document.querySelector("h1");
   let mainTemp = document.querySelector(".mainTemp");
   let temp = Math.round(response.data.main.temp);
@@ -67,14 +54,12 @@ function updateInfo (response) {
   let description = document.querySelector(".todayWeather");
   let humidity = document.querySelector(".humidity");
   let dateTime = document.querySelector(".dateAndTime");
-  let sunrise = document.querySelector(".sunriseTime");
-  let sunset = document.querySelector(".sunsetTime");
   let icons = document.querySelector(".icons");
+  let feelLike = document.querySelector(".feelLike");
+  
 
-  sunrise.innerHTML = `${getTime(response.data.sys.sunrise * 1000)}`;
  icons.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
  icons.setAttribute("alt", response.data.weather[0].main);
-  sunset.innerHTML = `${getTime(response.data.sys.sunset * 1000)}`;
   dateTime.innerHTML = `Last Updated: ${getDayAndTime(response.data.dt * 1000)}`;
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
   todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
@@ -83,6 +68,7 @@ function updateInfo (response) {
   description.innerHTML = response.data.weather[0].main;
   h1.innerHTML = response.data.name;
   mainTemp.innerHTML = temp;
+  feelLike.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
 }
 
 // Code for Current Button
