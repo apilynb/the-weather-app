@@ -44,10 +44,8 @@ function changeCity(event) {
 }
 
 function updateInfo (response) {
-  console.log(response);
   let h1 = document.querySelector("h1");
   let mainTemp = document.querySelector(".mainTemp");
-  let temp = Math.round(response.data.main.temp);
   let windSpeed = document.querySelector(".windSpeed");
   let todayLow = document.querySelector(".todayLow");
   let todayHigh = document.querySelector(".high");
@@ -57,6 +55,7 @@ function updateInfo (response) {
   let icons = document.querySelector(".icons");
   let feelLike = document.querySelector(".feelLike");
   
+  fTemperature = response.data.main.temp;
 
  icons.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
  icons.setAttribute("alt", response.data.weather[0].main);
@@ -67,7 +66,7 @@ function updateInfo (response) {
   humidity.innerHTML = `${response.data.main.humidity}%`;
   description.innerHTML = response.data.weather[0].main;
   h1.innerHTML = response.data.name;
-  mainTemp.innerHTML = temp;
+  mainTemp.innerHTML = Math.round(response.data.main.temp);
   feelLike.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
 }
 
@@ -101,6 +100,35 @@ function retrieveCityName (response) {
 let h1 = document.querySelector("#city-name");
 let currentCityName = response.data[0].name;
 h1.innerHTML = currentCityName;
+}
+
+// Code for converting Temperature
+
+let fTemperature = null;
+
+let fLink = document.querySelector(".fDegrees");
+let cLink = document.querySelector(".cDegrees");
+
+fLink.addEventListener("click", displayFTemp);
+cLink.addEventListener("click", displayCTemp);
+
+
+function displayCTemp (event) {
+event.preventDefault();
+let tempElement = document.querySelector(".mainTemp");
+fLink.classList.remove("active");
+cLink.classList.add("active");
+let cTemp = (fTemperature - 32) * 5 / 9;
+tempElement.innerHTML = Math.round(cTemp);
+}
+
+function displayFTemp (event) {
+  event.preventDefault();
+  let tempElement = document.querySelector(".mainTemp");
+  tempElement.innerHTML = Math.round(fTemperature);
+ fLink.classList.add("active");
+ cLink.classList.remove("active");
+  
 }
 
 search("New York City");

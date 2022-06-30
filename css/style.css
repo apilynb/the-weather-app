@@ -11,7 +11,7 @@ body {
 
 .mainImage {
   display: inline;
-  width: 80px;
+  width: 60px;
 }
 
 .leftBody {
@@ -63,13 +63,12 @@ h1 {
   margin-top: -5px;
 }
 
-.fDegrees,
-.cDegrees {
+.convertTemp {
   font-size: 16px;
   font-weight: bold;
   position: relative;
   top: -30px;
-  right: 15px;
+  left: -12px;
 }
 
 a {
@@ -118,4 +117,14 @@ img {
 
 .credit {
   font-size: xx-small;
+}
+
+.convertTemp .active {
+  color: black;
+  cursor: default;
+
+}
+
+.convertTemp .active:hover {
+  text-decoration: none;
 }
