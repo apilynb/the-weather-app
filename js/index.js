@@ -25,7 +25,6 @@ return `${weekday} ${hour}:${minutes}`;
 
 function getTime (sunTime) {
   let time = new Date (sunTime);
-console.log(time);
   let hour = time.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -60,7 +59,6 @@ function changeCity(event) {
 
 function updateInfo (response) {
   let h1 = document.querySelector("h1");
-  console.log(response);
   let mainTemp = document.querySelector(".mainTemp");
   let temp = Math.round(response.data.main.temp);
   let windSpeed = document.querySelector(".windSpeed");
@@ -74,12 +72,9 @@ function updateInfo (response) {
   let icons = document.querySelector(".icons");
 
   sunrise.innerHTML = `${getTime(response.data.sys.sunrise * 1000)}`;
-  console.log(sunrise);
-
  icons.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
  icons.setAttribute("alt", response.data.weather[0].main);
   sunset.innerHTML = `${getTime(response.data.sys.sunset * 1000)}`;
-  console.log(sunset);
   dateTime.innerHTML = `Last Updated: ${getDayAndTime(response.data.dt * 1000)}`;
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
   todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
@@ -107,16 +102,13 @@ function getPosition (position) {
   let limit = 1;
   let apiKey = "8ca7dd4e61360b90fb66918853670e48";
   let cWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  console.log(cWeatherUrl);
   let locationUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=${limit}&appid=${apiKey}&units=${units}`;
-  console.log(locationUrl);
   axios.get(cWeatherUrl).then(retrieveCTemp);
   axios.get(locationUrl).then(retrieveCityName);
 }
 function retrieveCTemp (response) {
   let main = document.querySelector(".mainTemp");
   main.innerHTML = Math.round(response.data.main.temp);
-  console.log(response);
 }
 
 function retrieveCityName (response) {
@@ -126,4 +118,3 @@ h1.innerHTML = currentCityName;
 }
 
 search("New York City");
-
