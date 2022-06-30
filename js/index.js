@@ -2,8 +2,6 @@
 
 function getDayAndTime (timestamp) {
   let now = new Date(timestamp);
-  
-
   let days = [
   "Sunday",
   "Monday",
@@ -13,21 +11,32 @@ function getDayAndTime (timestamp) {
   "Friday",
   "Saturday",
 ];
-
 let weekday = days[now.getDay()];
 let hour = now.getHours();
-
 if (hour < 10) {
   hour = `0${hour}`;
 }
-
 let minutes = now.getMinutes();
 if (minutes < 10) {
   minutes = `0${minutes}`;
 }
+return `${weekday} ${hour}:${minutes}`;
+}
 
-return `${weekday} ${hour}:${minutes}`
-console.log(Response);}
+function getTime (sunTime) {
+  let time = new Date (sunTime);
+console.log(time);
+  let hour = time.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  };
+
+  let minutes = time.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  };
+  return `${hour}:${minutes}`;
+}
 
 // Code for getting City Name
 
@@ -60,10 +69,15 @@ function updateInfo (response) {
   let description = document.querySelector(".todayWeather");
   let humidity = document.querySelector(".humidity");
   let dateTime = document.querySelector(".dateAndTime");
-  
-
+  let sunrise = document.querySelector(".sunriseTime");
+  let sunset = document.querySelector(".sunsetTime");
+  let iconId = response.data.weather[0].id;
+  console.log(response.data.weather[0].id);
+  updateIcons(response.data.weather[0].id);
+  sunrise.innerHTML = `${getTime(response.data.sys.sunrise * 1000)}`;
+  console.log(sunrise);
+  sunset.innerHTML = `${getTime(response.data.sys.sunset * 1000)}`;
   dateTime.innerHTML = `Last Updated: ${getDayAndTime(response.data.dt * 1000)}`;
-  console.log(dateTime);
   windSpeed.innerHTML = `${Math.round(response.data.wind.speed)} mph`;
   todayLow.innerHTML = `${Math.round(response.data.main.temp_min)}°`;
   todayHigh.innerHTML = `${Math.round(response.data.main.temp_max)}°`;
@@ -109,4 +123,87 @@ h1.innerHTML = currentCityName;
 }
 
 search("New York City");
-getDayAndTime();
+
+
+function updateIcons (response) {
+  let icons = document.querySelector(".icons");
+  let image = response.data.weather[0].id;
+  console.log(image);
+
+// Weather Mains
+
+let thunderstorm = [
+200, 201, 202, 210, 211, 212, 221, 230, 231, 232
+];
+
+let drizzleFour =[
+  300, 301, 302, 310, 311
+];
+let drizzleFive = [
+  312, 313, 314, 321
+];
+let rainTwo = [
+  500, 501, 521
+];
+let rainThree = [
+502, 503, 521
+];
+let rainSix = [
+  504, 511, 531, 522
+];
+let snowFour = [
+  600, 612, 611, 620
+];
+let snowFive = [
+  601, 613, 615, 616, 621
+];
+let snowSix = [
+  602, 622
+];
+let clearDay = 800;
+
+
+if (icons = thunderstorm) {
+ image.setAttribute("src", animated/thunder.svg);
+};
+if (image = drizzleFour) {
+   image.setAttribute("src", "animated/rainy-4.svg");
+};
+if (image = drizzleFive) {
+   image.setAttribute("src", "animated/rainy-5.svg");
+}
+if (image = rainTwo) {
+  image.setAttribute("src", "animated/rainy-2.svg");
+}
+if (image = rainThree) {
+  image.setAttribute("src", "animated/rainy-3.svg");
+}
+if (image = rainSix) {
+  image.setAttribute("src", "animated/rainy-6.svg");
+}
+if (image = snowFour) {
+  image.setAttribute("src", "animated/snowy-4.svg");
+}
+if (image = snowFive) {
+  image.setAttribute("src", "animated/snowy-5.svg");
+}
+if (image = snowSix) {
+  image.setAttribute("src", "animated/snowy-6.svg");
+}
+if (image = clearDay) {
+    image.setAttribute("src", "animated/day.svg");
+}
+if (image = 801) {
+  image.setAttribute("src", "animated/cloudy-day-1.svg");
+}
+if (image = 802) {
+    image.setAttribute("src", "animated/cloudy-day-2.svg");
+}
+if (image = 803) {
+  image.setAttribute("src", "animated/cloudy-day-3.svg");
+}
+if (image = 804) {
+  image.setAttribute("src", "animated/cloudy.svg");
+}
+}
+
