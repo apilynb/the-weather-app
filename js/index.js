@@ -23,6 +23,28 @@ if (minutes < 10) {
 return `${weekday} ${hour}:${minutes}`;
 }
 
+// Code for Displaying the Forecast
+
+function displayForcast (){
+  let forcastElement = document.querySelector(".weekForcast");
+  
+  let forcastHTML = `<div class="row">`;
+ let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function(day) {
+     forcastHTML = forcastHTML +
+   `<div class="col-2">
+    <div class="day">${day}</div>
+      <img class = "icons" src="animated/cloudy.svg" alt="cloudy" />
+    <div class="temp"> <span class="low">44</span>°/ <span class="high"> 58</span>°</div>
+  `;
+   forcastHTML = forcastHTML + `</div>`;
+  })
+  
+  forcastElement.innerHTML = forcastHTML;
+}
+
+
+
 // Code for getting City Name
 
 let city = document.querySelector("#city-name");
@@ -132,3 +154,4 @@ function displayFTemp (event) {
 }
 
 search("New York City");
+displayForcast();
