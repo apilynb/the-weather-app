@@ -51,6 +51,11 @@ h1 {
   text-align: center;
 }
 
+.fIcons{
+  max-width: 60px;
+}
+
+
 .mainTemp,
 .main {
   text-align: center;

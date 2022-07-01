@@ -25,25 +25,56 @@ return `${weekday} ${hour}:${minutes}`;
 
 // Code for Displaying the Forecast
 
-function displayForcast (){
+function formatDay (timestamp) {
+let date = new Date(timestamp * 1000);
+
+ let days = [
+  "Sun",
+  "Mon",
+  "Tue",
+  "Wed",
+  "Thu",
+  "Fri",
+  "Sat",]
+
+let day = days[date.getDay()];
+return day
+}
+
+
+function displayForcast (response){
+  let forcast = response.data.daily;
   let forcastElement = document.querySelector(".weekForcast");
   
   let forcastHTML = `<div class="row">`;
-  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
-  days.forEach(function(day) {
-     forcastHTML = forcastHTML +
-   `<div class="col-2">
-    <div class="day">${day}</div>
-      <img class = "icons" src="animated/cloudy.svg" alt="cloudy" />
-    <div class="temp"> <span class="low">44</span>°/ <span class="high"> 58</span>°</div>
+ 
+  forcast.forEach(function(forcastDay, index) {
+    if (index < 6) {
+     forcastHTML =
+       forcastHTML +
+       `<div class="col-2">
+    <div class="day">${formatDay(forcastDay.dt)}</div> 
+      <img class = "fIcons" src="http://openweathermap.org/img/wn/${
+        forcastDay.weather[0].icon}@2x.png" alt="cloudy" />
+    <div class="temp"> <span class="low">${Math.round(
+      forcastDay.temp.min
+    )}</span>°/ <span class="high"> ${Math.round(
+         forcastDay.temp.max
+       )}</span>°</div>
   `;
    forcastHTML = forcastHTML + `</div>`;
+    }
   })
   
   forcastElement.innerHTML = forcastHTML;
 }
 
-
+function getForcast (coords){
+  console.log(coords);
+  let apiKey = `8ca7dd4e61360b90fb66918853670e48`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForcast);
+};
 
 // Code for getting City Name
 
@@ -90,7 +121,8 @@ function updateInfo (response) {
   h1.innerHTML = response.data.name;
   mainTemp.innerHTML = Math.round(response.data.main.temp);
   feelLike.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
-  
+
+  getForcast(response.data.coord);
 }
 
 // Code for Current Button
@@ -155,4 +187,3 @@ function displayFTemp (event) {
 }
 
 search("New York City");
-displayForcast();
