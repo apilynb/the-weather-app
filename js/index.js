@@ -29,7 +29,7 @@ function displayForcast (){
   let forcastElement = document.querySelector(".weekForcast");
   
   let forcastHTML = `<div class="row">`;
- let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
+  let days = ["Fri", "Sat", "Sun", "Mon", "Tue", "Wed"];
   days.forEach(function(day) {
      forcastHTML = forcastHTML +
    `<div class="col-2">
@@ -90,6 +90,7 @@ function updateInfo (response) {
   h1.innerHTML = response.data.name;
   mainTemp.innerHTML = Math.round(response.data.main.temp);
   feelLike.innerHTML = `${Math.round(response.data.main.feels_like)}°`;
+  
 }
 
 // Code for Current Button
