@@ -156,8 +156,4 @@ let currentCityName = response.data[0].name;
 h1.innerHTML = currentCityName;
 }
 
-// Code for converting Temperature
-
-
-
 search("New York City");
