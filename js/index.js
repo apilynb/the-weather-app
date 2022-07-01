@@ -108,7 +108,6 @@ function updateInfo (response) {
   let icons = document.querySelector(".icons");
   let feelLike = document.querySelector(".feelLike");
   
-  fTemperature = response.data.main.temp;
 
  icons.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
  icons.setAttribute("alt", response.data.weather[0].main);
@@ -159,31 +158,6 @@ h1.innerHTML = currentCityName;
 
 // Code for converting Temperature
 
-let fTemperature = null;
 
-let fLink = document.querySelector(".fDegrees");
-let cLink = document.querySelector(".cDegrees");
-
-fLink.addEventListener("click", displayFTemp);
-cLink.addEventListener("click", displayCTemp);
-
-
-function displayCTemp (event) {
-event.preventDefault();
-let tempElement = document.querySelector(".mainTemp");
-fLink.classList.remove("active");
-cLink.classList.add("active");
-let cTemp = (fTemperature - 32) * 5 / 9;
-tempElement.innerHTML = Math.round(cTemp);
-}
-
-function displayFTemp (event) {
-  event.preventDefault();
-  let tempElement = document.querySelector(".mainTemp");
-  tempElement.innerHTML = Math.round(fTemperature);
- fLink.classList.add("active");
- cLink.classList.remove("active");
-  
-}
 
 search("New York City");
