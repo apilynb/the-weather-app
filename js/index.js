@@ -70,7 +70,6 @@ function displayForcast (response){
 }
 
 function getForcast (coords){
-  console.log(coords);
   let apiKey = `8ca7dd4e61360b90fb66918853670e48`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&exclude=hourly,minutely&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayForcast);
@@ -126,7 +125,7 @@ function updateInfo (response) {
 
 // Code for Current Button
 
-let currentButton = document.querySelector(".current");
+let currentButton = document.querySelector(".currentLocationButton");
 currentButton.addEventListener("click", getCurrentInfo);
 
 function getCurrentInfo (event) {

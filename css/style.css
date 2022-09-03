@@ -6,11 +6,11 @@ body {
   background-color: #aacfd0;
 }
 
-.searchBar{
+.searchBarInput{
   text-align: center;
 }
 
-.mainImage {
+.mainIcon {
   display: inline;
   width: 60px;
 }
